@@ -8,4 +8,4 @@ license = "MIT"
 
 
 [badges]
-github = { repository = "badboy/moenster" }
+github = { repository = "badboy/moenster", workflow = "CI" }
