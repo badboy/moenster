@@ -1,4 +1,4 @@
-//! # mønster
+//! # mønster (n) - pattern.
 //!
 //! Simple glob-style pattern matching for strings.
 //! Always matches the whole string from beginning to end.
@@ -14,7 +14,8 @@
 //!
 //! _Note: An empty bracket can never match anything._
 //!
-//! ## Example
+//! # Example
+//!
 //! ```
 //! # use moenster::stringmatch;
 //! assert!(stringmatch("m*nster", "mønster"));

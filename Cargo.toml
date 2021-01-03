@@ -4,5 +4,8 @@ version = "0.1.0"
 authors = ["Jan-Erik Rediger <janerik@fnordig.de>"]
 edition = "2018"
 description = "mønster (n) - pattern. simple glob-style pattern matching for strings"
+license = "MIT"
 
-[dependencies]
+
+[badges]
+github = { repository = "badboy/moenster" }
