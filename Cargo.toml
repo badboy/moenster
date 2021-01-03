@@ -5,7 +5,9 @@ authors = ["Jan-Erik Rediger <janerik@fnordig.de>"]
 edition = "2018"
 description = "mønster (n) - pattern. simple glob-style pattern matching for strings"
 license = "MIT"
-
+homepage = "https://github.com/badboy/moenster/"
+repository = "https://github.com/badboy/moenster/"
+documentation = "https://docs.rs/moenster"
 
 [badges]
 github = { repository = "badboy/moenster", workflow = "CI" }
