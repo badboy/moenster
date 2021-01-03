@@ -21,6 +21,15 @@
 //! assert!(stringmatch("m*nster", "mønster"));
 //! ```
 
+#![forbid(unsafe_code)]
+#![deny(missing_debug_implementations, nonstandard_style)]
+#![warn(missing_docs, future_incompatible, unreachable_pub, rust_2018_idioms)]
+#![allow(clippy::collapsible_if)]
+
+/// Match a string against the specified pattern.
+///
+/// Returns true if the string matches against the pattern from start to finish.
+/// See the top-level documentation for allowed wildcards.
 pub fn stringmatch(pattern: &str, string: &str) -> bool {
     stringmatch_bytes(pattern.as_bytes(), string.as_bytes(), Case::Sensitive)
 }
@@ -67,7 +76,7 @@ fn stringmatch_bytes(mut pattern: &[u8], mut string: &[u8], case: Case) -> bool 
                 }
                 let mut matched = false;
                 loop {
-                    if pattern.len() == 0 {
+                    if pattern.is_empty() {
                         break;
                     } else if pattern[0] == b'\\' && pattern.len() >= 2 {
                         pattern = &pattern[1..];
@@ -82,9 +91,7 @@ fn stringmatch_bytes(mut pattern: &[u8], mut string: &[u8], case: Case) -> bool 
                         let mut end = pattern[2];
                         let mut c = string[0];
                         if start > end {
-                            let tmp = start;
-                            start = end;
-                            end = tmp;
+                            std::mem::swap(&mut start, &mut end);
                         }
 
                         if matches!(case, Case::Insensitive) {
