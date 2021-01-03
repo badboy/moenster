@@ -1,4 +1,4 @@
-[![Crates.io](https://img.shields.io/crates/v/cargo-readme.svg)](https://crates.io/crates/cargo-readme)
+[![Crates.io](https://img.shields.io/crates/v/moenster.svg)](https://crates.io/crates/moenster)
 [![Workflow Status](https://github.com/badboy/moenster/workflows/CI/badge.svg)](https://github.com/badboy/moenster/actions?query=workflow%3A%22CI%22)
 
 # moenster
