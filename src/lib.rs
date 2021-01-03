@@ -1,6 +1,7 @@
 //! # mønster
 //!
 //! Simple glob-style pattern matching for strings.
+//! Always matches the whole string from beginning to end.
 //!
 //! | Wildcard | Description |
 //! | -------- | ----------- |
@@ -52,7 +53,15 @@ fn stringmatch_bytes(mut pattern: &[u8], mut string: &[u8], case: Case) -> bool 
             b'?' => {
                 string = &string[1..];
             }
-            p => {
+
+            // everything else
+            _ => {
+                // Ignore escaped characters
+                if pattern[0] == b'\\' && pattern.len() >= 2 {
+                    pattern = &pattern[1..];
+                }
+
+                let p = pattern[0];
                 if matches!(case, Case::Sensitive) {
                     if p != string[0] {
                         return false;
@@ -89,6 +98,11 @@ mod tests {
     }
 
     #[test]
+    fn escaped() {
+        assert!(stringmatch("moenste\\r", "moenster"));
+    }
+
+    #[test]
     fn questionmark() {
         assert!(stringmatch("mo?nster", "moenster"));
         assert!(stringmatch("m??nster", "moenster"));
@@ -104,6 +118,7 @@ mod tests {
 
     #[test]
     fn wildcard_and_more() {
+        assert!(stringmatch("m*oenster", "moenster"));
         assert!(stringmatch("m*", "moenster"));
         assert!(stringmatch("*r", "moenster"));
     }
